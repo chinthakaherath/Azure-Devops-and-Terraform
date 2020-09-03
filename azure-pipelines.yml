@@ -23,7 +23,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'Terraform Docker Hub'
-        repository: 'chinthaka88/weatherapinew'
+        repository: 'chinthaka88/weatherapi'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
