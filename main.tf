@@ -1,15 +1,15 @@
-variable "subscription_id" {}
-variable "client_id" {}
-variable "client_secret" {}
-variable "tenant_id" {}
-
-provider "azurerm"{
+provider "azurerm" {
     version = "2.5.0"
-    client_id       = var.client_id
-    client_secret   = var.client_secret
-    tenant_id       = var.tenant_id
-    subscription_id = var.subscription_id
     features {}
+}
+
+terraform {
+    backend "azurerm" {
+        resource_group_name  = "tf_state_blostorage_rg"
+        storage_account_name = "terraformstatestorageac"
+        container_name       = "tfstate"
+        key                  = "terraform.tfstate"
+    }
 }
 
 resource "azurerm_resource_group" "tf_test"{
